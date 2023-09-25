@@ -1,0 +1,59 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['udanarejestracja'])){
+    header('Location:index.php');
+    exit();
+}
+
+else{
+    unset($_SESSION['udanarejestracja']);
+
+}
+
+if(isset($_SESSION['fr_nick'])) unset($_SESSION['fr_nick']);
+if(isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+if(isset($_SESSION['fr_haslo1'])) unset($_SESSION['fr_haslo1']);
+if(isset($_SESSION['fr_haslo2'])) unset($_SESSION['fr_haslo2']);
+if(isset($_SESSION['fr_regulamin'])) unset($_SESSION['fr_regulamin']);
+
+if(isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
+if(isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+if(isset($_SESSION['e_regulamin'])) unset($_SESSION['e_regulamin']);
+if(isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
+
+?>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osadnicy-gra przegladarkowa</title>
+</head>
+
+<body>
+    
+    Udana rejestracja w serwisie. Morzesz juz zalogować sie na swoje konto<br><br>
+
+    <a href="index.php" style="color:black; text-decoration: none;">Zaloguj sie na swoje konto</a><br><br>
+
+    <form action="zaloguj.php" method="post">
+
+        Login:<br>
+        <input type="text" name="login"><br>
+
+        Hasło:<br>
+        <input type="password" name="haslo"><br><br>
+
+        <input type="submit" value="Zaloguj">
+
+    </form>
+
+    <?php
+    if(isset($_SESSION['blad'])) echo$_SESSION['blad'];
+    ?>
+
+</body>
+
+</html>
