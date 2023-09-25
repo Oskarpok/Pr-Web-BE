@@ -1,16 +1,51 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['zalogowany'])){
-        header('Location:index.php');
-        exit();
-    }
+session_start();
+if (!isset($_SESSION['zalogowany'])) {
+    header('Location:index.php');
+    exit();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script>
+    function aktualizujCzas() {
+        var dzisiaj = new Date();
+        var koniec = new Date("<?php echo $_SESSION['dnipremium']; ?>");
+
+        var milisekundy = koniec - dzisiaj;
+
+        if (milisekundy > 0) {
+            var dni = Math.floor(milisekundy / (1000 * 60 * 60 * 24));
+            milisekundy -= dni * (1000 * 60 * 60 * 24);
+
+            var godziny = Math.floor(milisekundy / (1000 * 60 * 60));
+            milisekundy -= godziny * (1000 * 60 * 60);
+
+            var minuty = Math.floor(milisekundy / (1000 * 60));
+            milisekundy -= minuty * (1000 * 60);
+            
+            var sekundy = Math.floor(milisekundy / 1000);
+
+            var czas = dni + " dni " + godziny + " godzin " + minuty + " minut " + sekundy + " sekund";
+            document.getElementById("zegar").innerHTML = czas;
+
+            setTimeout(aktualizujCzas, 1000);
+        } else {
+            document.getElementById("zegar").innerHTML = "Premium wygasło";
+        }
+    }
+
+    window.onload = aktualizujCzas;
+
+</script>
+
+
 </head>
 <body>
 
@@ -20,9 +55,8 @@
         echo" | <b>Kamien</b> {$_SESSION['kamien']}";
         echo" | <b>Zboze</b> {$_SESSION['zboze']}</p>";
 
-        echo"<p><b>Email</b> {$_SESSION['email']}<br>";
-        echo"<b>Dni premium:</b> {$_SESSION['dnipremium']}</p>";
-
+        echo "<p><b>Email</b> {$_SESSION['email']}<br>";
+        echo '<span><b>Data wygaśnięcia premium:</b>  <span id="zegar"></span></span></p>';
     ?>
     
 </body>
