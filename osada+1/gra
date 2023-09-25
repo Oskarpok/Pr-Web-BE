@@ -1,0 +1,29 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['zalogowany'])){
+        header('Location:index.php');
+        exit();
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <?php
+        echo"<p>Witaj {$_SESSION['user']} [<a href='logout.php'>Wyloguj<a/>]</p>";
+        echo"<p><b>Drewno</b> {$_SESSION['drewno']}";
+        echo" | <b>Kamien</b> {$_SESSION['kamien']}";
+        echo" | <b>Zboze</b> {$_SESSION['zboze']}</p>";
+
+        echo"<p><b>Email</b> {$_SESSION['email']}<br>";
+        echo"<b>Dni premium:</b> {$_SESSION['dnipremium']}</p>";
+
+    ?>
+    
+</body>
+</html>
