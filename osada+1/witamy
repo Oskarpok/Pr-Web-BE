@@ -51,7 +51,10 @@ if(isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
     </form>
 
     <?php
-    if(isset($_SESSION['blad'])) echo$_SESSION['blad'];
+    if(isset($_SESSION['blad'])) {
+        echo$_SESSION['blad'];
+        unset($_SESSION['blad']);
+    }
     ?>
 
 </body>
