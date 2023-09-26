@@ -4,6 +4,8 @@ require_once"database.php";
 
 if(!isset($_SESSION['logged_id'])){
     if((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))){
+        $_SESSION['save_log'] = $_POST['login'];
+
         $login = filter_input(INPUT_POST,'login');
         $pass = filter_input(INPUT_POST,'pass');
         
