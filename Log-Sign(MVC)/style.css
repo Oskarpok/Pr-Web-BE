@@ -1,0 +1,76 @@
+body{
+    background-color: gray;
+    color: black;
+    font-size: 33px;
+}
+
+form{
+    border: 1px solid #000000;
+    border-radius: 5px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3{
+    position: relative;
+    left: 700px;
+    display: block;
+    width: 200px;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email']{
+    margin-left: 65px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    border-radius: 5px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 2px 9px;
+    display: block;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+}
+
+.errors_signup{
+    position: relative;
+    display:block;
+    left: 666px;
+    width: 200px;
+    bottom: 40px;
+    color: red;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.succesreg{
+    position: relative;
+    display:block;
+    left: 666px;
+    width: 200px;
+    bottom: 40px;
+    color: purple;
+    font-size: 20px;
+    text-align: center;
+}
+
+.errors_login{
+    position: relative;
+    display:block;
+    left: 666px;
+    width: 200px;
+    color: red;
+    font-size: 20px;
+    text-align: center;
+}
